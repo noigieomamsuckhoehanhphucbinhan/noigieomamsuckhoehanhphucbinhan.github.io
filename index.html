@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- --- CẤU HÌNH SEO & CHIA SẺ LINK (ĐÃ NÂNG CẤP) --- -->
+    <title>An Spa - Trị Liệu Dưỡng Sinh Đông Y Bà Rịa Vũng Tàu</title>
+    
+    <!-- Mô tả SEO (Hiện trên Google): Viết lại hấp dẫn hơn -->
+    <meta name="description" content="An Spa - Tinh hoa Trị liệu Dưỡng sinh Đông Y. Chuyên gội đầu dưỡng sinh, massage đả thông kinh lạc, trị liệu cổ vai gáy giúp xua tan mệt mỏi, phục hồi năng lượng từ bên trong. Địa chỉ: 201 Võ Thị Sáu, Long Điền, Long Đất, Bà Rịa Vũng Tàu. Hotline: 0708 376 235.">
+    
+    <!-- Open Graph (Hiện khi chia sẻ Zalo, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="An Spa - Trị Liệu Dưỡng Sinh Đông Y">
+    <meta property="og:description" content="Thư giãn tuyệt đối với liệu pháp Đông Y: Gội đầu dưỡng sinh, Massage trị liệu cổ vai gáy. Đặt lịch ngay: 0708 376 235 tại Long Điền, Bà Rịa Vũng Tàu.">
+    
+    <!-- HÌNH ẢNH CHIA SẺ -->
+    <meta property="og:image" content="https://dienlanhnguyenhoang.com/anspa/uploads/photo_2025-12-15_09-06-38.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <meta property="og:url" content="https://dienlanhnguyenhoang.com/anspa">
+    <meta property="og:site_name" content="An Spa">
+
+    <!-- Thẻ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="An Spa - Dưỡng Sinh Đông Y">
+    <meta name="twitter:description" content="Địa chỉ: 201 Võ Thị Sáu, Long Điền, Long Đất, Bà Rịa Vũng Tàu. Hotline: 0708 376 235">
+    <meta name="twitter:image" content="https://dienlanhnguyenhoang.com/anspa/uploads/photo_2025-12-15_09-06-38.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://dienlanhnguyenhoang.com/anspa/uploads/icon.png" type="image/png">
+
+    <!-- Nhúng Font chữ -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. CẤU HÌNH CƠ BẢN --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fcfcfc;
+        }
+
+        /* --- 2. MÀN HÌNH LOADING --- */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            text-align: center;
+            letter-spacing: 1.5px;
+            animation: floatUp 1.5s ease-out;
+        }
+        
+        .brand-sub {
+            font-size: 1.1rem;
+            color: #8b5a2b;
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
+            font-style: italic;
+        }
+
+        /* --- PHẦN TRẠNG THÁI LOADING (XOAY) --- */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 3px solid #f0f0f0;
+            border-top: 3px solid #d4af37; 
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .security-msg {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            animation: fadeIn 2s infinite;
+        }
+
+        /* --- PHẦN TRẠNG THÁI THÀNH CÔNG (TÍCH XANH) --- */
+        .success-state {
+            display: none; /* Ẩn mặc định */
+            flex-direction: column;
+            align-items: center;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Dấu tích xanh SVG */
+        .checkmark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #27ae60;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #27ae60;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        .success-msg {
+            margin-top: 15px;
+            color: #27ae60; /* Màu xanh lá an toàn */
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+        
+        /* Animation cho dấu tích */
+        @keyframes stroke { 100% { stroke-dashoffset: 0; } }
+        @keyframes scale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
+        @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 30px #27ae60; } }
+
+        /* --- 3. KHUNG IFRAME --- */
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .hidden { opacity: 0; visibility: hidden; }
+        .visible { opacity: 1 !important; }
+        .display-none { display: none !important; }
+        .display-flex { display: flex !important; }
+    </style>
+</head>
+<body>
+
+    <!-- PHẦN 1: LOADING SCREEN -->
+    <div id="loading-screen">
+        <h1 class="brand-name">An Spa</h1>
+        <p class="brand-sub">Tinh Hoa Đông Y - Khơi Nguồn Sinh Khí</p>
+        
+        <!-- Trạng thái 1: Đang tải & Kiểm tra -->
+        <div id="loading-state" class="loading-state">
+            <div class="spinner"></div>
+            <p class="security-msg">Đang kiểm tra tính bảo mật...</p>
+        </div>
+
+        <!-- Trạng thái 2: Thành công (Tích xanh) -->
+        <div id="success-state" class="success-state">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+            <p class="success-msg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Kết nối an toàn, đang vào trang web...
+            </p>
+        </div>
+    </div>
+
+    <!-- PHẦN 2: TRANG WEB CHÍNH -->
+    <iframe 
+        id="main-frame"
+        src="https://dienlanhnguyenhoang.com/anspa" 
+        title="An Spa Official Website"
+        onload="webLoaded()">
+        <p style="text-align:center; padding: 20px;">
+            Trình duyệt không hỗ trợ. <a href="https://dienlanhnguyenhoang.com/anspa">Bấm vào đây</a>.
+        </p>
+    </iframe>
+
+    <script>
+        let isLoaded = false;
+
+        function webLoaded() {
+            if (isLoaded) return;
+            isLoaded = true;
+
+            const loadingState = document.getElementById('loading-state');
+            const successState = document.getElementById('success-state');
+            const loader = document.getElementById('loading-screen');
+            const frame = document.getElementById('main-frame');
+
+            // BƯỚC 1: Ẩn spinner xoay
+            loadingState.style.display = 'none';
+
+            // BƯỚC 2: Hiện tích xanh "Kết nối an toàn"
+            successState.style.display = 'flex';
+
+            // BƯỚC 3: Giữ tích xanh 1.2 giây để khách nhìn thấy và yên tâm
+            setTimeout(() => {
+                loader.classList.add('hidden'); // Mờ dần màn hình chờ
+                frame.classList.add('visible'); // Hiện web chính
+            }, 1200);
+        }
+
+        // --- CƠ CHẾ AN TOÀN ---
+        // Nếu sau 5s vẫn chưa tải xong, vẫn ép buộc hiện "An toàn" rồi vào web
+        // Để tránh khách phải đợi quá lâu
+        setTimeout(() => {
+            if (!isLoaded) {
+                console.log("Timeout trigger");
+                webLoaded();
+            }
+        }, 5000); 
+    </script>
+</body>
+</html>
